@@ -28,23 +28,18 @@ export const BeginScreen: FunctionComponent = () => {
     }
   };
 
-  const handleWeather = () => {
-    getCityWeather(city).then(res => {
+  const handleWeather = (ciudad?: string) => {
+    getCityWeather(ciudad ? ciudad : city).then(res => {
       setWeather(res);
     });
-    getCityWeatherOnWeek(city).then(res => {
+    getCityWeatherOnWeek(ciudad ? ciudad : city).then(res => {
       setWeatherWeek(res);
     });
     Keyboard.dismiss();
   };
 
   useEffect(() => {
-    getCityWeather('buenos aires').then(res => {
-      setWeather(res);
-    });
-    getCityWeatherOnWeek('buenos aires').then(res => {
-      setWeatherWeek(res);
-    });
+    handleWeather('buenos aires');
   }, []);
 
   return (

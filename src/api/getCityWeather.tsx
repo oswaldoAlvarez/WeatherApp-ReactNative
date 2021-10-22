@@ -1,10 +1,10 @@
-import { conectApi } from './conectApi';
+import { conectApi, key } from './conectApi';
 
 export const getCityWeather = async (city: string) => {
   try {
     const response = await conectApi.get('/weather', {
       headers: {
-        'x-rapidapi-key': '20e2c3eb2amsh662669d3d2bf9fep19af9cjsn552378143119',
+        'x-rapidapi-key': `${key}`,
       },
       params: { q: city, units: 'metric' },
     });
@@ -23,7 +23,7 @@ export const getCityWeatherOnWeek = async (city: string) => {
   try {
     const response = await conectApi.get('/forecast', {
       headers: {
-        'x-rapidapi-key': '20e2c3eb2amsh662669d3d2bf9fep19af9cjsn552378143119',
+        'x-rapidapi-key': `${key}`,
       },
       params: { q: city, units: 'metric' },
     });
