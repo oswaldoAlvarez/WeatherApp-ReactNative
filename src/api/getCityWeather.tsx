@@ -1,4 +1,5 @@
 import { conectApi, key } from './conectApi';
+import { climaCiudad } from '../interfaces/generalInterfaces';
 
 export const getCityWeather = async (city: string) => {
   try {
@@ -9,7 +10,7 @@ export const getCityWeather = async (city: string) => {
       params: { q: city, units: 'metric' },
     });
 
-    const climas: any = response.data;
+    const climas: climaCiudad | any = response.data;
 
     // console.log(JSON.stringify(climas, null, 4));
 
