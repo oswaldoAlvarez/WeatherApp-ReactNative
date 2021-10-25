@@ -9,6 +9,7 @@ import { InfoActualClima } from '../components/InfoActualClima';
 import { InfoClima5DiasDespues } from '../components/InfoClima5DiasDespues';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { SunBackground } from '../components/shared/SunBackground';
+import { ActivityIndicator } from 'react-native-paper';
 
 export const BeginScreen: FunctionComponent = () => {
   const [weather, setWeather] = useState<any>(undefined);
@@ -48,6 +49,7 @@ export const BeginScreen: FunctionComponent = () => {
         <SunBackground />
         <View style={styles.loadingContainer}>
           <Text style={styles.loading}>Cargando...</Text>
+          <ActivityIndicator size="large" color="#fff" />
         </View>
       </>
     );
@@ -73,29 +75,23 @@ export const BeginScreen: FunctionComponent = () => {
           </Text>
         </View>
         {weather ? (
-          <View style={styles.tempContainer}>
-            <Text style={styles.cityInfo}>
-              {weather.name}, {weather.sys.country}
-            </Text>
-            <Text style={styles.tempActual}>{Math.trunc(weather.main.temp)}°C</Text>
-          </View>
+          <>
+            <View style={styles.tempContainer}>
+              <Text style={styles.cityInfo}>
+                {weather.name}, {weather.sys.country}
+              </Text>
+              <Text style={styles.tempActual}>{Math.trunc(weather.main.temp)}°C</Text>
+            </View>
+            <View>
+              <InfoActualClima weather={weather} />
+              <InfoClima5DiasDespues weather={weather} weatherWeek={weatherWeek} />
+            </View>
+          </>
         ) : (
           <View style={styles.responseContainer}>
-            <Text style={styles.descriptionError}>Ha ocurrido un error con el endpoint o la ciudad!</Text>
+            <ActivityIndicator size="large" color="#fff" />
           </View>
         )}
-        <View>
-          {weather ? (
-            <>
-              <InfoActualClima infoTitulo="Información del Clima de la Ciudad actual:" weather={weather} />
-              <InfoClima5DiasDespues weather={weather} weatherWeek={weatherWeek} />
-            </>
-          ) : (
-            <View style={styles.responseContainer}>
-              <Text style={styles.descriptionError}>Ha ocurrido un error con el endpoint o la ciudad!</Text>
-            </View>
-          )}
-        </View>
       </View>
     </View>
   );
@@ -122,6 +118,7 @@ const styles = StyleSheet.create({
     borderColor: '#DDE1E6',
   },
   responseContainer: {
+    height: 700,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
@@ -159,6 +156,7 @@ const styles = StyleSheet.create({
   loading: {
     fontSize: 40,
     color: 'white',
+    marginBottom: 30,
   },
   loadingContainer: {
     flex: 1,

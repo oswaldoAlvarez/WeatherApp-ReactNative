@@ -3,17 +3,18 @@ import { View, Text, ScrollView, StyleSheet } from 'react-native';
 import { RowWeather } from './RowWeather';
 
 interface Props {
-  infoTitulo: string;
   weather: any;
 }
 
-export const InfoActualClima: FunctionComponent<Props> = ({ infoTitulo, weather }) => {
+export const InfoActualClima: FunctionComponent<Props> = ({ weather }) => {
   if (!weather) return <Text style={[styles.loading, styles.marginBottom30, styles.marginTop50]}>Cargando...</Text>;
   return (
     <>
       {weather ? (
-        <>
-          <Text style={styles.infoClima}>{infoTitulo}</Text>
+        <View style={styles.InfoClimaContainer}>
+          <Text style={styles.infoClima}>
+            Clima actual de ({weather.name}, {weather.sys.country})
+          </Text>
           <ScrollView horizontal={true}>
             <View style={styles.responseContainer}>
               <RowWeather weather={weather.name} descripcion="Ciudad:" />
@@ -29,7 +30,7 @@ export const InfoActualClima: FunctionComponent<Props> = ({ infoTitulo, weather 
               <RowWeather weather={weather.weather[0].description} descripcion="Descripción del Clima:" />
             </View>
           </ScrollView>
-        </>
+        </View>
       ) : (
         <Text style={[styles.loading, styles.marginBottom30]}>Ha ocurrido un error con el endpoint o la ciudad!</Text>
       )}
@@ -62,4 +63,7 @@ const styles = StyleSheet.create({
   marginBottom30: {
     marginBottom: 30,
   },
+  InfoClimaContainer: {
+    marginBottom: 50
+  }
 });
