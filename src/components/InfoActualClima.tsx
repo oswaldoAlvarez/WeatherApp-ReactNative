@@ -8,6 +8,7 @@ interface Props {
 }
 
 export const InfoActualClima: FunctionComponent<Props> = ({ infoTitulo, weather }) => {
+  if (!weather) return <Text style={[styles.loading, styles.marginBottom30, styles.marginTop50]}>Cargando...</Text>;
   return (
     <>
       {weather ? (
@@ -30,7 +31,7 @@ export const InfoActualClima: FunctionComponent<Props> = ({ infoTitulo, weather 
           </ScrollView>
         </>
       ) : (
-        <Text>Ha ocurrido un error con el endpoint o la ciudad!</Text>
+        <Text style={[styles.loading, styles.marginBottom30]}>Ha ocurrido un error con el endpoint o la ciudad!</Text>
       )}
     </>
   );
@@ -42,12 +43,23 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontFamily: 'sans-serif-condensed',
     color: 'white',
-    textDecorationLine: 'underline'
+    textDecorationLine: 'underline',
   },
   responseContainer: {
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
     paddingBottom: 10,
+  },
+  loading: {
+    fontSize: 30,
+    textAlign: 'center',
+    color: 'white',
+  },
+  marginTop50: {
+    marginTop: 50,
+  },
+  marginBottom30: {
+    marginBottom: 30,
   },
 });

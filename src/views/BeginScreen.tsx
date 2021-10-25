@@ -42,6 +42,16 @@ export const BeginScreen: FunctionComponent = () => {
     handleWeather('buenos aires');
   }, []);
 
+  if (!weather)
+    return (
+      <>
+        <SunBackground />
+        <View style={styles.loadingContainer}>
+          <Text style={styles.loading}>Cargando...</Text>
+        </View>
+      </>
+    );
+
   return (
     <View style={styles.beginContainer}>
       <SunBackground />
@@ -145,5 +155,14 @@ const styles = StyleSheet.create({
     paddingRight: 10,
     width: 30,
     zIndex: 2,
+  },
+  loading: {
+    fontSize: 40,
+    color: 'white',
+  },
+  loadingContainer: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 });

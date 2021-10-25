@@ -8,6 +8,7 @@ interface Props {
 }
 
 export const InfoClima5DiasDespues: FunctionComponent<Props> = ({ weather, weatherWeek }) => {
+  if (!weatherWeek) return <Text style={[styles.loading, styles.marginTop30]}>Cargando...</Text>;
   return (
     <>
       {weatherWeek ? (
@@ -26,7 +27,7 @@ export const InfoClima5DiasDespues: FunctionComponent<Props> = ({ weather, weath
           </ScrollView>
         </>
       ) : (
-        <Text>Ha ocurrido un error con el endpoint o la ciudad!</Text>
+        <Text style={styles.loading}>Ha ocurrido un error con el endpoint o la ciudad!</Text>
       )}
     </>
   );
@@ -43,6 +44,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontFamily: 'sans-serif-condensed',
     color: 'white',
-    textDecorationLine: 'underline'
+    textDecorationLine: 'underline',
+  },
+  loading: {
+    fontSize: 30,
+    textAlign: 'center',
+    color: 'white',
+  },
+  marginTop30: {
+    marginTop: 30,
   },
 });
