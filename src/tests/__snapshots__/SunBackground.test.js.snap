@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Probando funciones del SunBackground 1`] = `
+<View
+  style={
+    Object {
+      "backgroundColor": "#FFCC45",
+      "borderRadius": 500,
+      "height": 500,
+      "position": "absolute",
+      "right": -300,
+      "top": -250,
+      "transform": Array [
+        Object {
+          "rotate": "-50deg",
+        },
+      ],
+      "width": 500,
+    }
+  }
+/>
+`;

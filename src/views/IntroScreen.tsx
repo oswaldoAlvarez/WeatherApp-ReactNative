@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { StackScreenProps } from '@react-navigation/stack';
@@ -7,7 +7,7 @@ import { SunBackground } from '../components/shared/SunBackground';
 
 interface Props extends StackScreenProps<any, any> {}
 
-export const IntroScreen = ({ navigation }: Props) => {
+export const IntroScreen: FunctionComponent<Props> = ({ navigation }) => {
   return (
     <View style={[styles.container, globalStyles.globalMargin]}>
       <SunBackground />

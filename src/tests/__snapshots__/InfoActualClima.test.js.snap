@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Probando funciones del InfoActualClima 1`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "color": "white",
+        "fontSize": 30,
+        "textAlign": "center",
+      },
+      Object {
+        "marginBottom": 30,
+      },
+      Object {
+        "marginTop": 50,
+      },
+    ]
+  }
+>
+  Cargando...
+</Text>
+`;

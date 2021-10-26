@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Probando funciones del InfoClima5DiasDespues 1`] = `
+<Text
+  style={
+    Array [
+      Object {
+        "color": "white",
+        "fontSize": 30,
+        "textAlign": "center",
+      },
+      Object {
+        "marginTop": 30,
+      },
+    ]
+  }
+>
+  Cargando...
+</Text>
+`;
